@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends 'navbar/projectNavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      First in DOM, no order applied
+        <hr>
+        <form method="post" action="{% url 'printpagelogic'%}">
+            {% csrf_token %}
+            
+            <label>Enter Text:</label>
+            <input type="text"name="user_input"required>
+            <button type="Submit">submit</button>
+        </form>
+    </div>
+    <div class="col order-5">
+      Second in DOM, with a larger order
+        <hr>
+        <h4>{{user_input}}</h4>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
